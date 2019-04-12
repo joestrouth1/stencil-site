@@ -10,11 +10,11 @@ contributors:
 
 # Service Workers
 
-[Service workers](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) are a very powerful api that is essential for [PWAs](https://blog.ionic.io/what-is-a-progressive-web-app/), but can be hard to use. To help with this, we decided to build support for Service Workers into Stencil itself using [Workbox](https://workboxjs.org/).
+[Service workers](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) are a very powerful API that is essential for [PWAs](https://blog.ionic.io/what-is-a-progressive-web-app/), but can be hard to use. To help with this, we decided to build support for Service Workers into Stencil itself using [Workbox](https://workboxjs.org/).
 
 ## What is Workbox?
 
-Workbox is a library that greatly simplifies the Service Worker API. It allows you to quickly generate a service worker that can handle caching static assets, cache remote assets using routes (similar to Express) or even do offline Google Analytics. Because we are built on top of Workbox, you can easily use any of the functionality they offer. For more info on Workbox, [check out their docs](https://developers.google.com/web/tools/workbox/)
+Workbox is a library that greatly simplifies the Service Worker API. It allows you to quickly generate a service worker that can handle caching static assets, cache remote assets using routes (similar to Express) or even do offline Google Analytics. Because we are built on top of Workbox, you can easily use any of the functionality they offer. For more info on Workbox, [check out their docs](https://developers.google.com/web/tools/workbox/).
 
 ## Usage
 
@@ -153,7 +153,7 @@ async onSWUpdate() {
 }
 ```
 
-The `swUpdate` event is emitted by Stencil every time a new service worker is installed. When a service worker is waiting for registration, the toast is shown. After clicking the reload button, a message is posted to the waiting service worker, letting it know to take over. This message needs to be handled by the service worker; therefore we need to create a custome one (e. g. `src/sw.js`) and call `skipWaiting()`.
+The `swUpdate` event is emitted by Stencil every time a new service worker is installed. When a service worker is waiting for registration, the toast is shown. After clicking the reload button, a message is posted to the waiting service worker, letting it know to take over. This message needs to be handled by the service worker; therefore we need to create a custom one (e. g. `src/sw.js`) and call `skipWaiting()`.
 
 ```tsx
 importScripts("workbox-v3.4.1/workbox-sw.js");
@@ -190,7 +190,7 @@ To show a notification to the user after being granted permission, we can use th
 self.registration.showNotification('Hakuna matata.');
 ```
 
-Usually we will have a backend that will send out push notifications to clients, and we want our service worker to handle them. To do that, we can register an event listener in our worker for the `push` event. The event will be of type [`PushEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent) and have a `data` field of type [`PushMessageData`](https://developer.mozilla.org/en-US/docs/Web/API/PushMessageData).
+Usually we will have a backend that will send out push notifications to clients and we want our service worker to handle them. To do that, we can register an event listener in our worker for the `push` event. The event will be of type [`PushEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent) and have a `data` field of type [`PushMessageData`](https://developer.mozilla.org/en-US/docs/Web/API/PushMessageData).
 
 ```tsx
 self.addEventListener('push', event => {
